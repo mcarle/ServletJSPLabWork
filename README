@@ -1,0 +1,5 @@
+Repository for java training course work. 
+
+Labs can be found under ~/labs with the package structure: 
+
+com.mattcarle.training.lab{lab_#}.{lab_name}.java
