@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+task jarProject(type: Jar) {
+    baseName 'jar-training-lab'
+    with jar
+
+    manifest {
+    	attributes (
+    		'Main-Class': 'Main'
+    	)
+    }
+}
+
