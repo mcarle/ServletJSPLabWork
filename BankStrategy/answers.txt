@@ -1,0 +1,27 @@
+How would you implement this using inheritance? 
+---------------------------------------------------
+The base Account class would have abstract operation methods which the 
+concrete account subtype would implement with their respective logic.
+
+
+How many classes would be needed to provide for all the permutations? 
+-------------------------------------------------------------------------
+Using this design, you would need [# value variations] * [# business rule variation] subtypes for each
+different account behavior. 
+
+
+What happens if another two variations of one of these rules are added later?
+------------------------------------------------------------------------------
+The would extend Account as new subtypes.
+
+
+What happens if the bank manager wants to grant a special consideration to a customer, waiving fees for a month? 
+-----------------------------------------------------------------------------------------------------------------
+They would have to change the behavior of an existing Account subtype to fit their needs, 
+or they would have to create an entirely new subtye just for that specific need. 
+
+
+
+Is there duplication of any algorithmic code in this approach?
+-----------------------------------------------------------------
+Yes, many of the Account subtypes would use redundant logic for their own implementation. 

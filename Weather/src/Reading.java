@@ -43,6 +43,7 @@ public class Reading {
   }
   
   public String getTime() {
+
     switch(hourOfDay) {
     case 9: 
       return " morning"; 
