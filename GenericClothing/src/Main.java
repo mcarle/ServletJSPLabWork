@@ -6,7 +6,7 @@ public class Main {
         new ClothingPair<Sock>(new Sock(5, Color.black)
             , new Sock(10, Color.black)), 
         new ClothingPair<Glove>(new Glove(10, Color.gray), 
-            new Glove(10, Color.gray))
+            new Glove(10, Color.gray)), 
     };
     
     assert !pairs[0].isMatch(); 

@@ -1,5 +1,5 @@
 
-public class ClothingPair<T extends Sized> {
+public class ClothingPair<T extends Sized & Colored> {
   private T itm1; 
   private T itm2; 
   
@@ -9,6 +9,7 @@ public class ClothingPair<T extends Sized> {
   }
   
   public boolean isMatch() {
-    return itm1.getSize() == itm2.getSize(); 
+    return itm1.getSize() == itm2.getSize()
+        && itm1.getColor() == itm2.getColor(); 
   }
 }
