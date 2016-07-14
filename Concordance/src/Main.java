@@ -2,8 +2,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Main {
   public static void main(String[] args) {
@@ -23,10 +28,27 @@ public class Main {
         }
       }
       
-      // print out all words
+      /* print out all words
       for(String word : wordCount.keySet()) {
         System.out.println("Word " + word + " occurs " + wordCount.get(word) + " times");
+      }*/
+      
+      List<Map.Entry<String, Integer>> wordList
+        = new ArrayList<>(wordCount.entrySet()); 
+      
+      wordList.sort(new Comparator<Entry<String, Integer>>() {
+
+        @Override
+        public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+          return o1.getValue().compareTo(o2.getValue()) ;
+        }
+      });
+      
+      for(Entry<String, Integer> entry : wordList) {
+        String word = entry.getKey(); 
+        System.out.println("Word " + word + " occurs " + wordCount.get(word) + " times");
       }
+        
       
     } catch(IOException ioEx) {
       System.out.println("Error opening file: ");
