@@ -1,9 +1,10 @@
+import java.util.function.Predicate;
 
 /**
  * tests whether the provided string has >= n occurences of the specified char. 
  *
  */
-public class MinOccurencesCriterion implements StringCriterion {
+public class MinOccurencesCriterion implements Predicate<String> {
   private char c; 
   private int minOccurences; 
   

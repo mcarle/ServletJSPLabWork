@@ -1,5 +1,6 @@
+import java.util.function.Predicate;
 
-public class FirstLetterRangeCriterion implements StringCriterion {
+public class FirstLetterRangeCriterion implements Predicate<String> {
   private char lowChar; 
   private char highChar; 
   

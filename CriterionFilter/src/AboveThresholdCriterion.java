@@ -1,5 +1,6 @@
+import java.util.function.Predicate;
 
-public class AboveThresholdCriterion implements StringCriterion {
+public class AboveThresholdCriterion implements Predicate<String> {
 
   private int threshold; 
   
