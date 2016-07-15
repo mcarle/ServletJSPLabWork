@@ -9,38 +9,29 @@ public class Main {
     List<String> ls = Arrays.asList(
         "Fred", "Jim", "William", "Susannah", "Lucy", "Orinoco", "Toby"
       );
-    
-      AboveThresholdCriterion threshCriterion = 
-          new AboveThresholdCriterion(6); 
-      List<String> longStrings = filterList(ls, threshCriterion);
+      
+      List<String> longStrings = filterList(ls,(val) 
+          -> val.length() > 6); 
       assert longStrings.size() == 3;
       assert longStrings.get(0).equals("William");
       assert longStrings.get(1).equals("Susannah");
       assert longStrings.get(2).equals("Orinoco");
       
-      FirstLetterRangeCriterion flrCriterion = 
-          new FirstLetterRangeCriterion('A', 'M'); 
-      List<String> charRngStrings = filterList(ls, flrCriterion); 
+      List<String> charRngStrings = filterList(ls, (val)
+          -> val.charAt(0) >= 'A' && val.charAt(0) <= 'M'); 
       assert charRngStrings.size() == 3; 
       
-      MinOccurencesCriterion minOccCriterion = 
-          new MinOccurencesCriterion('l', 2);
-      List<String> minOccStrings = filterList(ls, minOccCriterion); 
+
+      List<String> minOccStrings = filterList(ls, (val)
+          -> (val.length() - val.replace("l", "").length()) >= 2); 
       assert minOccStrings.size() == 1; 
       assert minOccStrings.get(0).equals("William"); 
       
       List<Integer> ints = Arrays.asList(
           5, 25, -10, 30, 60, -160);
-          
-      // keep only ints that are >= 0
-      List<Integer> aboveMin = filterList(ints, 
-          new Predicate<Integer>() {
-            @Override
-            public boolean test(Integer val) {
-              return val >= 0; 
-            }
-        
-      }); 
+      
+      List<Integer> aboveMin = filterList(ints, (val)
+          -> val >= 0);    
       
       assert aboveMin.size() == 4; 
       assert aboveMin.get(0) == 5; 
@@ -54,16 +45,8 @@ public class Main {
           LocalDate.of(2016, 7, 15)
        );
       
-      // keep only dates 2016 and later
-      List<LocalDate> afterThresh = filterList(dates, 
-          new Predicate<LocalDate>() {
-
-            @Override
-            public boolean test(LocalDate val) {
-              return val.getYear() >= 2016; 
-            }
-        
-      }); 
+      List<LocalDate> afterThresh = filterList(dates, (val) 
+          -> val.getYear() >= 2016); 
       
       assert afterThresh.size() == 2; 
       assert afterThresh.get(0).equals(dates.get(1)); 
